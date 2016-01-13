@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--My modifications-->
+    <style name="HomeText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">22dp</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="HomeTextsmall" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18dp</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Heading" parent="@android:style/TextAppearance">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/heading_blue</item>
+    </style>
+
+    <style name="Content" parent="@android:style/TextAppearance">
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">@color/content_dark_grey</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
+</resources>
