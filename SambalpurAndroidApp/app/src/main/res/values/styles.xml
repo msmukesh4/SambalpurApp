@@ -32,6 +32,18 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="ListHeading" parent="@android:style/TextAppearance">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/darkBlack</item>
+        <item name="android:gravity">left</item>
+    </style>
+    <style name="ListContent" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/darkBlack</item>
+        <item name="android:gravity">left</item>
+    </style>
+
     <style name="Heading" parent="@android:style/TextAppearance">
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginTop">10dp</item>

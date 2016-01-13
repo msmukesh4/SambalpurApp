@@ -31,6 +31,9 @@
         <activity android:name=".Festival"
             android:label="Festivals">
         </activity>
+
+        <activity android:name=".UpdateActivity"></activity>
+
     </application>
 
 </manifest>
