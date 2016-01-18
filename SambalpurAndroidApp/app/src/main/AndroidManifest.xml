@@ -28,7 +28,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Festival"
+        <activity android:name=".FestivalActivity"
+            android:label="Festivals">
+        </activity>
+        <activity android:name=".FestivalDetailActivity"
             android:label="Festivals">
         </activity>
 

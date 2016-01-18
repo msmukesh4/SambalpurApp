@@ -8,10 +8,12 @@
         android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:id="@+id/img_festival_icon"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"/>
             <LinearLayout
                 android:layout_width="0dp"
@@ -23,17 +25,18 @@
                 <TextView
                     android:id="@+id/txt_festival_heading"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkBlue"
                     android:text="Festival Name"
-                    style="@style/ListHeading"/>
+                    style="@style/ListHeading"
+                    android:padding="5dp"/>
                 <TextView
                     android:id="@+id/txt_festival_caption"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:text="Festival caption"
                     style="@style/ListContent"
+                    android:padding="5dp"
                     android:layout_below="@+id/txt_festival_heading"/>
             </LinearLayout>
         </LinearLayout>

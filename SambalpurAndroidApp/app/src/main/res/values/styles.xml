@@ -58,4 +58,19 @@
         <item name="android:singleLine">false</item>
     </style>
 
+    <style name="Festival_Heading" parent="@android:style/TextAppearance">
+        <item name="android:singleLine">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/darkBlue</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="Festival_Content" parent="@android:style/TextAppearance">
+        <item name="android:singleLine">false</item>
+        <item name="android:textSize">17dp</item>
+        <item name="android:textColor">@color/content_dark_grey</item>
+        <item name="android:gravity">left</item>
+    </style>
+
 </resources>

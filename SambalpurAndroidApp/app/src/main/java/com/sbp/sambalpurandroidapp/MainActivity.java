@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (more_home_title[finalI]=="FESTIVALS"){
-                        Intent it = new Intent(getApplicationContext(),Festival.class);
+                        Intent it = new Intent(MainActivity.this,FestivalActivity.class);
                         startActivity(it);
                     }
                     Toast.makeText(MainActivity.this, "hello" + more_home_title[finalI], Toast.LENGTH_LONG).show();
