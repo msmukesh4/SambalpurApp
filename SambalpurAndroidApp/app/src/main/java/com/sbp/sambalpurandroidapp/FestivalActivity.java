@@ -115,7 +115,8 @@ public class FestivalActivity extends AppCompatActivity {
                 fHolder.f_date.setText(obj_festival.getFestival_date());
                 String url = obj_festival.getFestival_icon();
                 System.out.println("url["+position+"] is : "+url);
-                Picasso.with(context).load(url).into(fHolder.f_icon);
+                Picasso.with(context).load(url).centerCrop().fit().into(fHolder.f_icon);
+//                fHolder.f_icon.setImageResource(R.drawable.logo);
                 final String fid = obj_festival.getFestival_id();
                 convertView.setOnClickListener(new ListView.OnClickListener() {
                     @Override

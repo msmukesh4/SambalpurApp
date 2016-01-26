@@ -44,4 +44,6 @@
     <color name="home_rect_start_color">#3300ff</color>
     <color name="home_rect_start_color_more_dark">#000060</color>
     <color name="home_rect_end_color">#c0c0c0</color>
+
+    <color name="yellow">#ffff11</color>
 </resources>

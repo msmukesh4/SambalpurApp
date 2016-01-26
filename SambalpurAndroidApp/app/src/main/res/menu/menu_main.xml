@@ -2,6 +2,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.sbp.sambalpurandroidapp.MainActivity">
+
+    <item
+        android:id="@+id/search"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:title="search"
+        android:icon="@drawable/search"/>
+
+    <item
+        android:id="@+id/notification"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        android:title="notify"
+        android:icon="@drawable/bell" />
+
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

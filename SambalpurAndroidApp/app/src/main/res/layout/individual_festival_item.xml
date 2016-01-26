@@ -12,7 +12,7 @@
             android:layout_marginLeft="5dp">
             <ImageView
                 android:id="@+id/img_festival_icon"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"/>
             <LinearLayout

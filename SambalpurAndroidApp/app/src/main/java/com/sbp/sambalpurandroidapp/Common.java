@@ -14,5 +14,8 @@ public class Common {
 //    PURPLE[99004C,FF007F]
 //    BLACK[202020,6060606]
 
+    public static int notification_count = 0;
+    public static boolean isActivityVisible = false;
+
 
 }

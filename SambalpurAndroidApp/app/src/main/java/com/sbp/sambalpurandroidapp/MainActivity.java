@@ -1,11 +1,16 @@
 package com.sbp.sambalpurandroidapp;
 
 import android.app.ActionBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,12 +18,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    // toobar items
+    ImageView alert_bell_icon;
+    boolean isNotificationAvailable = false;
+    BroadcastReceiver mMessageReceiver;
+    int backButtonCount_forAppClosing = 0;
+    String strNotification_count = "";
+
 
     TextView title1,title2,title3,title4,title5,title6,title7,title8,title9;
     LinearLayout ll;
@@ -29,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         ll = (LinearLayout) findViewById(R.id.ll_layer1);
 
@@ -111,11 +127,77 @@ public class MainActivity extends AppCompatActivity {
         }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Common.isActivityVisible = false;
+        backButtonCount_forAppClosing = 0;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // reciever class
+
+        mMessageReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                // Get extra data included in the Intent
+                strNotification_count = ""+Common.notification_count;
+                if (Common.notification_count == 0){
+                    isNotificationAvailable = false;
+                }else{
+                    isNotificationAvailable = true;
+                }
+                invalidateOptionsMenu();
+            }
+        };
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("validateMenu"));
+        Common.isActivityVisible = true;
+        strNotification_count = ""+Common.notification_count;
+        if (Common.notification_count == 0){
+            isNotificationAvailable = false;
+        }else{
+            isNotificationAvailable = true;
+        }
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.notification);
+        MenuItemCompat.setActionView(menuItem, R.layout.alert_text_layout);
+        RelativeLayout rl_notifyCount = (RelativeLayout) MenuItemCompat.getActionView(menuItem);
+
+        View image = menu.findItem(R.id.notification).getActionView();
+        alert_bell_icon = (ImageView) image.findViewById(R.id.alert_icon);
+        alert_bell_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                alert_bell_icon.setClickable(false);
+                Toast.makeText(getApplicationContext(), "Showing Notifications...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, CustomNotificationActivity.class));
+            }
+        });
+        TextView cart_text = (TextView) rl_notifyCount.findViewById(R.id.alert_text);
+        if(isNotificationAvailable) {
+            cart_text.setVisibility(View.VISIBLE);
+            cart_text.setText(strNotification_count);
+            System.out.println("notification count :"+strNotification_count);
+        }else{
+            cart_text.setVisibility(View.INVISIBLE);
+        }
+//        invalidateOptionsMenu();
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -126,9 +208,26 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Toast.makeText(MainActivity.this,"Your pressed settings",Toast.LENGTH_SHORT).show();
+        }
+        if (id == R.id.search){
+            Toast.makeText(MainActivity.this,"Searching...",Toast.LENGTH_LONG).show();
+        }
+        if (id == R.id.notification){
+            Toast.makeText(MainActivity.this, "Pressed on alert", Toast.LENGTH_SHORT).show();
         }
 
+
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backButtonCount_forAppClosing >= 1) {
+            finish();
+        }else {
+            backButtonCount_forAppClosing++;
+            Toast.makeText(getApplicationContext(), "Press again to close the app", Toast.LENGTH_LONG).show();
+        }
     }
 }

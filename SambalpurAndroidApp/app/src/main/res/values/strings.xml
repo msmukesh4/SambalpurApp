@@ -8,4 +8,9 @@
 
     <!--application Action bar text-->
     <string name="update_activity">Update</string>
+
+    <!-- For push notification -->
+    <string name="ParseAppId">YPxZq3ViYQuQF6FG1Er4K4wDFegTElNMZc4f1rac</string>
+    <string name="ParseClientId">TORmUF9MjO5wDDquAUCxnT3UzwwSWd88bacimmlW</string>
+
 </resources>
