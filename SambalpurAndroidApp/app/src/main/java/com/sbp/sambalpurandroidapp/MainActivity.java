@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView alert_bell_icon;
     boolean isNotificationAvailable = false;
     BroadcastReceiver mMessageReceiver;
-    int backButtonCount_forAppClosing = 0;
+//    int backButtonCount_forAppClosing = 0;
     String strNotification_count = "";
 
 
@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         ll = (LinearLayout) findViewById(R.id.ll_layer1);
@@ -130,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Common.isActivityVisible = false;
-        backButtonCount_forAppClosing = 0;
+        Common.backButtonCount_forAppClosing = 0;
     }
 
     @Override
@@ -181,8 +180,7 @@ public class MainActivity extends AppCompatActivity {
         alert_bell_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                alert_bell_icon.setClickable(false);
-                Toast.makeText(getApplicationContext(), "Showing Notifications...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Showing Notifications...", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(MainActivity.this, CustomNotificationActivity.class));
             }
         });
@@ -197,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
 //        invalidateOptionsMenu();
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -216,17 +213,15 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.notification){
             Toast.makeText(MainActivity.this, "Pressed on alert", Toast.LENGTH_SHORT).show();
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
-        if (backButtonCount_forAppClosing >= 1) {
+        if (Common.backButtonCount_forAppClosing >= 1) {
             finish();
         }else {
-            backButtonCount_forAppClosing++;
+            Common.backButtonCount_forAppClosing++;
             Toast.makeText(getApplicationContext(), "Press again to close the app", Toast.LENGTH_LONG).show();
         }
     }

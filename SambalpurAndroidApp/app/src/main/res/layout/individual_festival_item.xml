@@ -9,7 +9,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp">
+            android:padding="5dp">
             <ImageView
                 android:id="@+id/img_festival_icon"
                 android:layout_width="80dp"

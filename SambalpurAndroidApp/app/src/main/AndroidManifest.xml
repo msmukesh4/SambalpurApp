@@ -35,7 +35,6 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -51,12 +50,24 @@
 
         <activity android:name=".FestivalActivity"
             android:label="Festivals">
-        </activity>
-        <activity android:name=".FestivalDetailActivity"
-            android:label="Festivals">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".FestivalDetailActivity"
+            android:label="Festivals">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FestivalActivity" />
+        </activity>
+
+        <activity android:name=".UpdateActivity"
+            android:label="Update your app">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
         <activity android:name=".CustomNotificationActivity"
             android:label="Latest Events">
@@ -70,8 +81,6 @@
         <!-- service starts -->
         <service
             android:name="com.parse.PushService" />
-
-
 
         <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>

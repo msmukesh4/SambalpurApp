@@ -22,6 +22,7 @@ public class CustomNotificationActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
         TextView tv  = (TextView) findViewById(R.id.textView);
         tv.setText("No. of notifications : "+Common.notification_count);
         Common.notification_count = 0;
