@@ -9,10 +9,18 @@ public class Festival {
     String festval_banner;
     String festival_date;
     String festival_details;
-    String festval_date;
+    String[] festival_images;
     String festival_id;
     Double latitude;
     Double longitude;
+
+    public String[] getFestival_images() {
+        return festival_images;
+    }
+
+    public void setFestival_images(String[] festival_images) {
+        this.festival_images = festival_images;
+    }
 
     public String getFestival_id() {
         return festival_id;
@@ -78,11 +86,4 @@ public class Festival {
         this.festival_details = festival_details;
     }
 
-    public String getFestval_date() {
-        return festval_date;
-    }
-
-    public void setFestval_date(String festval_date) {
-        this.festval_date = festval_date;
-    }
 }
