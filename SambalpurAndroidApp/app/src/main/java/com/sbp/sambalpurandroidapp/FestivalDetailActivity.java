@@ -26,7 +26,6 @@ public class FestivalDetailActivity extends AppCompatActivity {
     ImageView alert_bell_icon;
     boolean isNotificationAvailable = false;
     BroadcastReceiver mMessageReceiver;
-    //    int backButtonCount_forAppClosing = 0;
     String strNotification_count = "";
 
     TextView fid;
@@ -134,15 +133,5 @@ public class FestivalDetailActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (Common.backButtonCount_forAppClosing >= 1) {
-            finish();
-        }else {
-            Common.backButtonCount_forAppClosing++;
-            Toast.makeText(getApplicationContext(), "Press again to close the app", Toast.LENGTH_LONG).show();
-        }
     }
 }

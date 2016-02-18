@@ -108,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent it = new Intent(MainActivity.this,FestivalActivity.class);
                         startActivity(it);
                     }
+                    if (more_home_title[finalI]=="SHOPPING"){
+                        Intent it = new Intent(MainActivity.this,ShopActivity.class);
+                        startActivity(it);
+                    }
                     Toast.makeText(MainActivity.this, "hello" + more_home_title[finalI], Toast.LENGTH_LONG).show();
                 }
             });

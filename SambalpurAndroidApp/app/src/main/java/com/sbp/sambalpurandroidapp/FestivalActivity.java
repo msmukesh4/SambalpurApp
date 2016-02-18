@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
@@ -15,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,10 +23,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import junit.framework.Test;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by mukesh on 3/1/16.
@@ -39,11 +34,11 @@ public class FestivalActivity extends AppCompatActivity {
     ImageView alert_bell_icon;
     boolean isNotificationAvailable = false;
     BroadcastReceiver mMessageReceiver;
-    //    int backButtonCount_forAppClosing = 0;
     String strNotification_count = "";
 
     ListView list_view_festival;
     ArrayList<Festival> festivalList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,7 +128,7 @@ public class FestivalActivity extends AppCompatActivity {
                 fHolder.f_name.setText(obj_festival.getFestival_name());
                 fHolder.f_date.setText(obj_festival.getFestival_date());
                 String url = obj_festival.getFestival_icon();
-                System.out.println("url["+position+"] is : "+url);
+//                System.out.println("url["+position+"] is : "+url);
                 Picasso.with(context).load(url).centerCrop().fit().into(fHolder.f_icon);
 //                fHolder.f_icon.setImageResource(R.drawable.logo);
                 final String fid = obj_festival.getFestival_id();

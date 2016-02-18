@@ -4,6 +4,8 @@ package com.sbp.sambalpurandroidapp;
  * Created by mukesh on 17/1/16.
  */
 public class Festival {
+
+    int id;
     String festival_name;
     String festival_icon;
     String festval_banner;
@@ -13,6 +15,14 @@ public class Festival {
     String festival_id;
     Double latitude;
     Double longitude;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String[] getFestival_images() {
         return festival_images;
