@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <ImageView
+                android:id="@+id/img_res_icon"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp">
+                <TextView
+                    android:id="@+id/txt_res_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/darkBlue"
+                    android:text="Festival Name"
+                    style="@style/ListHeading"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/txt_res_caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Festival caption"
+                    style="@style/ListContent"
+                    android:padding="5dp"
+                    android:layout_below="@+id/txt_festival_heading"/>
+
+                <RatingBar
+                    android:layout_margin="5dp"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/res_ratingBar"
+                    android:isIndicator="false"
+                    android:numStars="5"
+                    android:rating="5"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

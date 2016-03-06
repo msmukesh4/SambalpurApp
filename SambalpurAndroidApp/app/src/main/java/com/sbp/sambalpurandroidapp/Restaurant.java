@@ -5,9 +5,10 @@ package com.sbp.sambalpurandroidapp;
  */
 public class Restaurant {
 
+    int id;
     String res_name;
     String uid;
-    Double rating;
+    int rating;
     String contact_number1;
     String contact_number2;
     Double latitude;
@@ -18,6 +19,14 @@ public class Restaurant {
     String address;
     String caption;
     String details;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getRes_name() {
         return res_name;
@@ -35,11 +44,11 @@ public class Restaurant {
         this.uid = uid;
     }
 
-    public Double getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

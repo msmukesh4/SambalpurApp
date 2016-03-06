@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     // toobar items
     ImageView alert_bell_icon;
     boolean isNotificationAvailable = false;
-    BroadcastReceiver mMessageReceiver;
-//    int backButtonCount_forAppClosing = 0;
     String strNotification_count = "";
 
 
@@ -112,6 +110,11 @@ public class MainActivity extends AppCompatActivity {
                         Intent it = new Intent(MainActivity.this,ShopActivity.class);
                         startActivity(it);
                     }
+                    if (more_home_title[finalI]=="RESTURANTS & HOTELS"){
+                        Intent it = new Intent(MainActivity.this,RestaurantListActivity.class);
+                        startActivity(it);
+                    }
+
                     Toast.makeText(MainActivity.this, "hello" + more_home_title[finalI], Toast.LENGTH_LONG).show();
                 }
             });
@@ -139,34 +142,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // reciever class
 
-        mMessageReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                // Get extra data included in the Intent
-                strNotification_count = ""+Common.notification_count;
-                if (Common.notification_count == 0){
-                    isNotificationAvailable = false;
-                }else{
-                    isNotificationAvailable = true;
-                }
-                invalidateOptionsMenu();
-            }
-        };
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("validateMenu"));
-        Common.isActivityVisible = true;
-        strNotification_count = ""+Common.notification_count;
-        if (Common.notification_count == 0){
-            isNotificationAvailable = false;
-        }else{
-            isNotificationAvailable = true;
-        }
+
     }
 
 

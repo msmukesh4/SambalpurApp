@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -29,12 +30,12 @@ public class ShopActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_festival);  // activity_festival layout is the base list view layout
+        setContentView(R.layout.listview_activity);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        list_view_shop = (ListView) findViewById(R.id.festival_list);  // festival_list is the id of list_view
+        list_view_shop = (ListView) findViewById(R.id.list);
         shopList = new ArrayList<Shop>();
 
         Shop raw_festival = new Shop();
@@ -57,7 +58,9 @@ public class ShopActivity extends AppCompatActivity {
         raw_festival.setCaption("We sell electronics");
         shopList.add(raw_festival);
 
-        list_view_shop.setAdapter(new ShopListAdapter(this,shopList));
+        list_view_shop.setAdapter(new ShopListAdapter(this, shopList));
+
+        System.out.println(list_view_shop.toString());
 
     }
 
@@ -69,10 +72,9 @@ public class ShopActivity extends AppCompatActivity {
 
         ShopHolder(View convertview){
             s_name = (TextView) convertview.findViewById(R.id.txt_shop_heading);
-//            s_caption = (TextView) convertview.findViewById(R.id.txt_shop_caption);
+            s_caption = (TextView) convertview.findViewById(R.id.txt_shop_caption);
             s_icon = (ImageView) convertview.findViewById(R.id.img_shop_icon);
             s_rating = (RatingBar) convertview.findViewById(R.id.ratingBar);
-            s_rating.setIsIndicator(false);
         }
     }
 
@@ -108,28 +110,30 @@ public class ShopActivity extends AppCompatActivity {
             ShopHolder fHolder;
             try{
                 if (convertView == null){
-                    convertView = inflater.inflate(R.layout.individual_shop_list,null,false);
+                    convertView = inflater.inflate(R.layout.individual_shop_item,null,false);
                     fHolder = new ShopHolder(convertView);
                     convertView.setTag(fHolder);
                 }else{
                     fHolder = (ShopHolder) convertView.getTag();
                 }
 
-                Shop obj_festival = shop_list.get(position);
+                final Shop obj_festival = shop_list.get(position);
                 fHolder.s_name.setText(obj_festival.getShop_name());
-//                fHolder.s_caption.setText(obj_festival.getCaption());
+                fHolder.s_caption.setText(obj_festival.getCaption());
                 String url = obj_festival.getShop_icon();
                 fHolder.s_rating.setRating(obj_festival.getRating());
 //                System.out.println("url["+position+"] is : "+url);
                 Picasso.with(context).load(url).centerCrop().fit().into(fHolder.s_icon);
                 final int sid = obj_festival.getId();
+                System.out.println("sid : "+sid);
 
                 convertView.setOnClickListener(new ListView.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Toast.makeText(context,"clicked on "+obj_festival.getFestival_name()+obj_festival.getFestival_id(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"clicked on "+obj_festival.getId(), Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(context,ShopDetailActivity.class);
-                        intent.putExtra("shop_id",sid);
+                        int s = obj_festival.getId();
+                        intent.putExtra("shop_id",""+s);
                         context.startActivity(intent);
                     }
                 });

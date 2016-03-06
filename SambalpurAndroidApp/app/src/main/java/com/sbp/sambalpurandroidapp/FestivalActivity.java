@@ -1,12 +1,9 @@
 package com.sbp.sambalpurandroidapp;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -33,7 +30,6 @@ public class FestivalActivity extends AppCompatActivity {
     // toobar items
     ImageView alert_bell_icon;
     boolean isNotificationAvailable = false;
-    BroadcastReceiver mMessageReceiver;
     String strNotification_count = "";
 
     ListView list_view_festival;
@@ -42,12 +38,12 @@ public class FestivalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_festival);
+        setContentView(R.layout.listview_activity);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        list_view_festival = (ListView) findViewById(R.id.festival_list);
+        list_view_festival = (ListView) findViewById(R.id.list);
         festivalList = new ArrayList<Festival>();
 
         // the festival array with json data
@@ -151,41 +147,19 @@ public class FestivalActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Common.isActivityVisible = false;
-        Common.backButtonCount_forAppClosing = 0;
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        // reciever class
 
-        mMessageReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                // Get extra data included in the Intent
-                strNotification_count = ""+Common.notification_count;
-                if (Common.notification_count == 0){
-                    isNotificationAvailable = false;
-                }else{
-                    isNotificationAvailable = true;
-                }
-                invalidateOptionsMenu();
-            }
-        };
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("validateMenu"));
-        Common.isActivityVisible = true;
-        strNotification_count = ""+Common.notification_count;
-        if (Common.notification_count == 0){
-            isNotificationAvailable = false;
-        }else{
-            isNotificationAvailable = true;
-        }
+
     }
 
 
@@ -246,16 +220,5 @@ public class FestivalActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onBackPressed() {
-        if (Common.backButtonCount_forAppClosing >= 1) {
-            finish();
-        }else {
-            Common.backButtonCount_forAppClosing++;
-            Toast.makeText(getApplicationContext(), "Press again to close the app", Toast.LENGTH_LONG).show();
-        }
-    }
-
 
 }
